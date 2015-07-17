@@ -8,24 +8,23 @@ var {
   View
   } = React;
 
-var regionText = {
-  latitude: '0',
-  longitude: '0',
-  latitudeDelta: '0',
-  longitudeDelta: '0',
-};
-
 var mapTab = React.createClass({
-
   getInitialState() {
     return {
-      mapRegion: {latitude: 40.7411, longitude: -73.9897,latitudeDelta: 1, longitudeDelta: 1},
-      mapRegionInput: null,
-      annotations: [{latitude: 40.7411, longitude: -73.9897, animateDrop: true, title: "YO"}],
-      isFirstLoad: true,
+      mapRegion: {},
+      annotations: [],
     };
   },
-
+  componentDidMount: function () {
+    var self = this;
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      self.setState({
+        mapRegion: {latitude: pos.coords.latitude, longitude: pos.coords.longitude,latitudeDelta: .02, longitudeDelta: .02}
+      });
+    }, function (err) {
+      alert(err)
+    }, {enableHighAccuracy: true, timeout: 5000})
+  },
   render() {
     return (
       <View>
@@ -33,7 +32,6 @@ var mapTab = React.createClass({
           style={styles.map}
           annotations={this.state.annotations || undefined}
           region={this.state.mapRegion}/>
-
       </View>
     );
   },

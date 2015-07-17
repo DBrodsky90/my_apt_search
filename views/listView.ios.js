@@ -83,14 +83,15 @@ var listView = React.createClass({
 
 var styles = StyleSheet.create({
 	listView : {
-		paddingTop: 20,
-		backgroundColor: '#F5FCFF'
+		marginTop: 30,
+		backgroundColor: 'cornflowerblue'
 	},
 	container: {
 		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		borderWidth: 1,
 	},
 	rightContainer: {
 		flex: 1
@@ -104,8 +105,8 @@ var styles = StyleSheet.create({
 		fontSize: 14
 	},
 	thumbnail : {
-		width: 53,
-		height: 81
+		width: 100,
+		height: 100
 	},
 	apt : {
 		fontSize: 15,

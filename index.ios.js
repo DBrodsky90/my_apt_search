@@ -31,7 +31,7 @@ var navBar = React.createClass({
   getInitialState: function () {
     return {
       selectedTab: 'mapTab',
-      camNotifCount: 0,
+      addNotifCount: 0,
       aptNotifCount: 0,
       presses: 0
     };

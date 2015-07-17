@@ -105,9 +105,6 @@ var styles = StyleSheet.create({
     color: 'black',
     margin: 50,
   },
-  tabIcon: {
-   color: 'purple'
-  }
 });
 
 AppRegistry.registerComponent('my_apt_search', () => my_apt_search);

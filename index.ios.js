@@ -6,6 +6,7 @@
 
 var React = require('react-native');
 var MapView = require('./views/mapView.ios.js');
+var AptListView = require('./views/listView.ios.js');
 var {
   AppRegistry,
   StyleSheet,
@@ -72,7 +73,7 @@ var navBar = React.createClass({
               aptNotifCount: this.state.aptNotifCount + 1,
             });
           }}>
-          {this._renderContent('#783E33', 'Red Tab')}
+          <AptListView/>
         </TabBarIOS.Item>
 
          <TabBarIOS.Item

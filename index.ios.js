@@ -8,46 +8,105 @@ var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
+  TabBarIOS,
   Text,
-  View,
+  View
 } = React;
 
 var my_apt_search = React.createClass({
   render: function() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View>
+        <Text>Welcome to Hell</Text> 
       </View>
     );
   }
 });
 
+var navBar = React.createClass({
+  statics: {
+    title: '<TabBarIOS>',
+    description: 'Tab Bar For IOS'
+  },
+  getInitialState: function () {
+    return {
+      selectedTab: 'mapTab',
+      camNotifCount: 0,
+      aptNotifCount: 0,
+      presses: 0
+    };
+  },
+  _renderContent: function(color: string, pageText: string) {
+    return (
+      <View style={[styles.tabContent, {backgroundColor: color}]}>
+        <Text style={styles.tabText}>{pageText}</Text>
+        <Text style={styles.tabText}>{this.state.presses}</Text>
+      </View>
+    );
+  },
+  render: function () {
+    return (
+      <TabBarIOS>
+        <TabBarIOS.Item 
+          style={styles.tabIcon}
+          title="Map"
+          icon={{uri: "mapTab", isStatic: true}}
+          selected={this.state.selectedTab === 'mapTab'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'mapTab',
+            });
+          }}>
+          {this._renderContent('#414A8C', 'Welcome to the map Tab')}
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title="Your Apts"
+          icon={{ uri: "listTab", isStatic: true }}
+          badge={this.state.aptNotifCount > 0 ? this.state.aptNotifCount : undefined}
+          selected={this.state.selectedTab === 'redTab'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'redTab',
+              aptNotifCount: this.state.aptNotifCount + 1,
+            });
+          }}>
+          {this._renderContent('#783E33', 'Red Tab')}
+        </TabBarIOS.Item>
+
+         <TabBarIOS.Item
+          title="Camera"
+          icon={{ uri: "cameraTab", isStatic: true }}
+          badge={this.state.camNotifCount > 0 ? this.state.camNotifCount : undefined}
+          selected={this.state.selectedTab === 'camTab'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'camTab',
+              camNotifCount: this.state.camNotifCount + 1,
+            });
+          }}>
+          {this._renderContent('cornflowerblue', 'Camera Tab')}
+        </TabBarIOS.Item>
+
+      </TabBarIOS>
+
+    );
+  }
+});
+
 var styles = StyleSheet.create({
-  container: {
+  tabContent: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  tabText: {
+    color: 'black',
+    margin: 50,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  tabIcon: {
+   color: 'purple'
+  }
 });
 
 AppRegistry.registerComponent('my_apt_search', () => my_apt_search);
+AppRegistry.registerComponent('my_apt_search', () => navBar);

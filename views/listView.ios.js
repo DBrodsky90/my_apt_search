@@ -2,11 +2,13 @@
 
 var FAKE_APTS = [
 	{
+		apt: 'Apartment mom told me about',
 		address: '1911 Smith and Wesson Drive, Brooklyn, NY 11235',
 		price: 290000,
 		img_url : 'http://knowitallgroup.com/wp-content/uploads/2013/01/apartment.jpg'
 	},
 	{
+		apt: 'Apartment owned by fat lady',
 		address: '902 Broadway, New York, NY, 10021',
 		price: 2900000,
 		img_url : 'http://www.pgslandscapesc.com/img/apartment-maintenance.jpg'
@@ -61,8 +63,9 @@ var listView = React.createClass({
 					style={styles.thumbnail}
 				/>
 				<View style={styles.rightContainer}>
-					<Text style={styles.address}>Address : {apt.address}</Text>
-					<Text style={styles.price}>Price : {apt.price}</Text>
+					<Text style={styles.apt}>{apt.apt}</Text>
+					<Text style={styles.address}>{apt.address}</Text>
+					<Text style={styles.price}>${apt.price}</Text>
 				</View>
 			</View>
 		)
@@ -92,18 +95,21 @@ var styles = StyleSheet.create({
 	rightContainer: {
 		flex: 1
 	},
-	title: {
-		fontSize: 20,
-		marginBottom: 8,
-		textAlign: 'center'
-	},
 	price: {
 		textAlign: 'center',
-		fontSize: 18
+		fontSize: 13
+	},
+	address: {
+		textAlign: 'center',
+		fontSize: 14
 	},
 	thumbnail : {
 		width: 53,
 		height: 81
+	},
+	apt : {
+		fontSize: 15,
+		textAlign: 'center'
 	}
 });
 

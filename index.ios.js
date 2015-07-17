@@ -5,6 +5,7 @@
 'use strict';
 
 var React = require('react-native');
+var MapView = require('./views/mapView.ios.js');
 var {
   AppRegistry,
   StyleSheet,
@@ -57,7 +58,7 @@ var navBar = React.createClass({
               selectedTab: 'mapTab',
             });
           }}>
-          {this._renderContent('#414A8C', 'Welcome to the map Tab')}
+          <MapView/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item

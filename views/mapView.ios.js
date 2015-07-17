@@ -2,36 +2,54 @@
 
 var React = require('react-native');
 var {
+  MapView,
   StyleSheet,
   Text,
   View
   } = React;
 
+var regionText = {
+  latitude: '0',
+  longitude: '0',
+  latitudeDelta: '0',
+  longitudeDelta: '0',
+};
+
 var mapTab = React.createClass({
-  render: function() {
+
+  getInitialState() {
+    return {
+      mapRegion: {latitude: 40.7411, longitude: -73.9897,latitudeDelta: 1, longitudeDelta: 1},
+      mapRegionInput: null,
+      annotations: [{latitude: 40.7411, longitude: -73.9897, animateDrop: true, title: "YO"}],
+      isFirstLoad: true,
+    };
+  },
+
+  render() {
     return (
-      <View style={ styles.container }>
-        <View style={ styles.header }>
-        </View>
-        <View style={ styles.content }>
-          <Text>
-            Map tab!
-          </Text>
-        </View>
+      <View>
+        <MapView
+          style={styles.map}
+          annotations={this.state.annotations || undefined}
+          region={this.state.mapRegion}/>
+
       </View>
     );
-  }
+  },
 });
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
+  map: {
+    height: 589,
+    marginTop: 30,
+    borderWidth: 1,
+    borderColor: '#000000',
   },
-   header: {
-    height: 40,
-    backgroundColor: 'yellow'
-  }
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
 
 module.exports = mapTab;

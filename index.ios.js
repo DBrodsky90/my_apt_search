@@ -78,7 +78,7 @@ var navBar = React.createClass({
           title="Add Apt"
           icon={{ uri: "addTab", isStatic: true }}
           badge={this.state.addNotifCount > 0 ? this.state.addNotifCount : undefined}
-          selected={this.state.selectedTab === 'camTab'}
+          selected={this.state.selectedTab === 'addTab'}
           onPress={() => {
             this.setState({
               selectedTab: 'addTab',

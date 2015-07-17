@@ -75,17 +75,17 @@ var navBar = React.createClass({
         </TabBarIOS.Item>
 
          <TabBarIOS.Item
-          title="Camera"
-          icon={{ uri: "cameraTab", isStatic: true }}
-          badge={this.state.camNotifCount > 0 ? this.state.camNotifCount : undefined}
+          title="Add Apt"
+          icon={{ uri: "addTab", isStatic: true }}
+          badge={this.state.addNotifCount > 0 ? this.state.addNotifCount : undefined}
           selected={this.state.selectedTab === 'camTab'}
           onPress={() => {
             this.setState({
-              selectedTab: 'camTab',
-              camNotifCount: this.state.camNotifCount + 1,
+              selectedTab: 'addTab',
+              addNotifCount: this.state.addNotifCount + 1,
             });
           }}>
-          {this._renderContent('cornflowerblue', 'Camera Tab')}
+          {this._renderContent('cornflowerblue', 'Add Tab')}
         </TabBarIOS.Item>
 
       </TabBarIOS>

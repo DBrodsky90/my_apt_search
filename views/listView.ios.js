@@ -12,6 +12,18 @@ var FAKE_APTS = [
 		address: '902 Broadway, New York, NY, 10021',
 		price: 2900000,
 		img_url : 'http://www.pgslandscapesc.com/img/apartment-maintenance.jpg'
+	},
+	{
+		apt: "Will's House",
+		address: '719 Willmon Boulevard, Hoodcity, NY, 10028',
+		price: 5,
+		img_url: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Box.agr.jpg'
+	},
+	{
+		apt: "David's Mansion",
+		address: '711 Richkid Street, Brooklyn, NY, 11235',
+		price: 1000000,
+		img_url: 'http://www.theblaze.com/wp-content/uploads/2014/07/awesome-mansion.jpg'
 	}
 ];
 
@@ -52,6 +64,7 @@ var listView = React.createClass({
 				dataSource={this.state.dataSource}
 				renderRow={this.renderApt}
 				style={styles.listView}
+				automaticallyAdjustContentInsets={false}
 			/>
 		);
 	},
